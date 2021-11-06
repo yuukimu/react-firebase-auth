@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "lib": [
+            "dom",
+            "es2020"
+        ],
+        "jsx": "react",
+        "sourceMap": true,
+        "strict": false,
+        "esModuleInterop": true
+    }
+}
