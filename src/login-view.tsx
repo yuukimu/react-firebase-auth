@@ -17,20 +17,12 @@ const LoginView: React.FC = () => {
         setUser(null);
     }
 
-    const labelStyle = {
-        display: 'block'
-    }
-
     const tableStyle = {
         tableLayout: 'fixed' as 'fixed',
         width: '100%',
         textAlign: 'left' as 'left',
         border: 'solid 1px black',
         marginBottom: '10px'
-    }
-
-    const tdStyle = {
-        border: 'solid 1px black'
     }
 
     useEffect(() => {
@@ -55,11 +47,11 @@ const LoginView: React.FC = () => {
                                 </tr>
                                 <tr>
                                     <td style={{border: 'solid 1px black'}}>アクセストークン</td>
-                                    <td style={{border: 'solid 1px black'}}>{user.accessToken.slice(0,60)}....</td>
+                                    <td style={{border: 'solid 1px black'}}>{user.accessToken.substr(0,50)}....</td>
                                 </tr>
                                 <tr>
                                     <td style={{border: 'solid 1px black'}}>リフレッシュトークン</td>
-                                    <td style={{border: 'solid 1px black'}}>{user.refreshToken.slice(0,60)}....</td>
+                                    <td style={{border: 'solid 1px black'}}>{user.refreshToken.substr(0,50)}....</td>
                                 </tr>
                             </tbody>
                         </table>
