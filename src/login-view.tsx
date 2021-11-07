@@ -17,6 +17,22 @@ const LoginView: React.FC = () => {
         setUser(null);
     }
 
+    const labelStyle = {
+        display: 'block'
+    }
+
+    const tableStyle = {
+        tableLayout: 'fixed' as 'fixed',
+        width: '100%',
+        textAlign: 'left' as 'left',
+        border: 'solid 1px black',
+        marginBottom: '10px'
+    }
+
+    const tdStyle = {
+        border: 'solid 1px black'
+    }
+
     useEffect(() => {
         firebaseAuth.onAuthStateChanged((currentUser) => {
             if (currentUser) {
@@ -31,7 +47,23 @@ const LoginView: React.FC = () => {
             <>
                 {user ? 
                     <>
-                        <p><label>{user.displayName}</label></p>
+                        <table style={tableStyle}>
+                            <tbody>
+                                <tr>
+                                    <td style={{width: '180px', border: 'solid 1px black'}}>ユーザー名</td>
+                                    <td style={{border: 'solid 1px black'}}>{user.displayName}</td>
+                                </tr>
+                                <tr>
+                                    <td style={{border: 'solid 1px black'}}>アクセストークン</td>
+                                    <td style={{border: 'solid 1px black'}}>{user.accessToken.slice(0,60)}....</td>
+                                </tr>
+                                <tr>
+                                    <td style={{border: 'solid 1px black'}}>リフレッシュトークン</td>
+                                    <td style={{border: 'solid 1px black'}}>{user.refreshToken.slice(0,60)}....</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
                         <button onClick={logoutHandler}>ログアウト</button>
                     </>
                     : <button onClick={loginHandler}>ログイン</button>
